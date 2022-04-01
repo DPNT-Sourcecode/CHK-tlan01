@@ -18,10 +18,14 @@ public class MarketItem {
     private final int price;
     private final List<MarketSpecialOffer> specialOffers;
     
-    public MarketItem(String tag, int price, MarketSpecialOffer... specialOffer) {
+    public MarketItem(String tag, int price, MarketSpecialOffer... specialOffers) {
+        this(tag, price, Arrays.asList(specialOffers));
+    }
+    
+    public MarketItem(String tag, int price, List<MarketSpecialOffer> specialOffers) {
         this.tag = tag;
         this.price = price;
-        this.specialOffers = Arrays.asList(specialOffer);
+        this.specialOffers = specialOffers;
     }
 
     public String getTag() {
@@ -37,9 +41,11 @@ public class MarketItem {
     }
 
     public MarketItem cloneItem() {
-        return new MarketItem(tag, price, specialOffers.stream()
-                .map(so -> so.cloneOffer())
-                .collect(Collectors.toList())
+        return new MarketItem(tag, price, 
+                specialOffers.stream()
+                        .map(so -> so.cloneOffer())
+                        .collect(Collectors.toList())
         );
     }
 }
+

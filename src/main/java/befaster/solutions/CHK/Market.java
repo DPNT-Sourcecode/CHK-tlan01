@@ -45,19 +45,13 @@ public class Market {
     private Integer getItemTotalValue(String itemTag) {
         MarketItemBucket itemBucket = itemBuckets.get(itemTag);
         int numberOfItems = itemBucket.numberOfItems;
-        int itemsForSpecialOffer = itemBucket.marketItem.getSpecialOffer().getNumberOfItems();
         int itemPrice = itemBucket.marketItem.getPrice();
-        int speciafOfferPrice = itemBucket.marketItem.getSpecialOffer().getPriceOffer();
         
-        if(numberOfItems < itemsForSpecialOffer || itemsForSpecialOffer == 0) {
-            return numberOfItems * itemPrice;
+        List<MarketSpecialOffer> specialOffers = itemBucket.marketItem.getSpecialOffer();
+        for(MarketSpecialOffer specialOffer : ) {
+            
         }
         
-        if(numberOfItems == itemsForSpecialOffer) {
-            return speciafOfferPrice;
-        }
-        
-        int specialOfferValue = (numberOfItems / itemsForSpecialOffer) * speciafOfferPrice;
         int singleItemsValue = (numberOfItems % itemsForSpecialOffer) * itemPrice;
         
         return specialOfferValue + singleItemsValue;
@@ -91,3 +85,4 @@ public class Market {
         }
     }
 }
+
