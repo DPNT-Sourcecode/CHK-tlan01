@@ -38,10 +38,11 @@ public class CheckoutSolution {
             return false;
         }
         
-        market.addItem(itemTag, ITEMS_FOR_TAGS.get(itemTag));
+        market.addItem(itemTag, ITEMS_FOR_TAGS.get(itemTag).cloneItem());
         return true;
     }
 }
+
 
 
 
