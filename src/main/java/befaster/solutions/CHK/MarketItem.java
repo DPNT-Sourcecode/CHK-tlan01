@@ -5,6 +5,10 @@
  */
 package befaster.solutions.CHK;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  *
  * @author teodor
@@ -12,12 +16,12 @@ package befaster.solutions.CHK;
 public class MarketItem {
     private final String tag;
     private final int price;
-    private final MarketSpecialOffer specialOffer;
+    private final List<MarketSpecialOffer> specialOffers;
     
-    public MarketItem(String tag, int price, MarketSpecialOffer specialOffer) {
+    public MarketItem(String tag, int price, MarketSpecialOffer... specialOffer) {
         this.tag = tag;
         this.price = price;
-        this.specialOffer = specialOffer;
+        this.specialOffers = Arrays.asList(specialOffer);
     }
 
     public String getTag() {
@@ -28,18 +32,14 @@ public class MarketItem {
         return price;
     }
 
-    public MarketSpecialOffer getSpecialOffer() {
-        return specialOffer;
-    }
-    
-    @Override
-    public String toString() {
-        return String.format("{%s, %d, %d, %d}", 
-                tag, price, specialOffer.getNumberOfItems(), specialOffer.getPriceOffer()
-        );
+    public List<MarketSpecialOffer> getSpecialOffer() {
+        return specialOffers;
     }
 
     public MarketItem cloneItem() {
-        return new MarketItem(tag, price, specialOffer.cloneOffer());
+        return new MarketItem(tag, price, specialOffers.stream()
+                .map(so -> so.cloneOffer())
+                .collect(Collectors.toList())
+        );
     }
 }

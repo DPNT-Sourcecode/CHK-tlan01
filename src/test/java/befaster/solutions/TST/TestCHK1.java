@@ -7,7 +7,6 @@ package befaster.solutions.TST;
 
 import befaster.solutions.CHK.CheckoutSolution;
 import org.junit.Test;
-import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.Assert;
 
 /**
@@ -46,8 +45,3 @@ public class TestCHK1 {
         Assert.assertEquals(value, expectedValue);
     }
 }
-
-
-
-
-
