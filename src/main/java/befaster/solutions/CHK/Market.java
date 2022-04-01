@@ -5,7 +5,9 @@
  */
 package befaster.solutions.CHK;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -47,9 +49,19 @@ public class Market {
         int numberOfItems = itemBucket.numberOfItems;
         int itemPrice = itemBucket.marketItem.getPrice();
         
-        List<MarketSpecialOffer> specialOffers = itemBucket.marketItem.getSpecialOffer();
-        for(MarketSpecialOffer specialOffer : ) {
+        List<MarketSpecialOffer> specialOffers = new ArrayList<>(itemBucket.marketItem.getSpecialOffer());
+        specialOffers.sort((so1, so2) -> so2.getNumberOfItems() - so1.getNumberOfItems());
+        
+        int speciaOffersValue = 0;
+        int remainingItems = numberOfItems;
+        for(MarketSpecialOffer specialOffer : specialOffers) {
+            int specialOfferValue = 0;
+            if(specialOffer.getNumberOfItems() != 0 && remainingItems >= specialOffer.getNumberOfItems()) {
+                specialOfferValue = remainingItems / specialOffer.getNumberOfItems() * specialOffer.getPriceOffer();
+                remainingItems = remainingItems - remainingItems / specialOffer.getNumberOfItems();
+            }
             
+            speciaOffersValue += speciaOffersValue;
         }
         
         int singleItemsValue = (numberOfItems % itemsForSpecialOffer) * itemPrice;
@@ -85,4 +97,5 @@ public class Market {
         }
     }
 }
+
 
