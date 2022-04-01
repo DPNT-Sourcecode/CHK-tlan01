@@ -52,5 +52,3 @@ public class CheckoutSolution {
         return market.getMarketValue();
     }
 }
-
-

@@ -16,4 +16,3 @@ public class MarketItemSameFreeSpecialOffer extends MarketSpecialOffer{
     }
 
 }
-
