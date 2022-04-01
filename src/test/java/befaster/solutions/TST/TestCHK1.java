@@ -19,14 +19,14 @@ public class TestCHK1 {
         testSkus("B");
         testSkus("C");
         testSkus("D");
-//        sol.checkout("x");
-//        sol.checkout("AxA");
-//        sol.checkout("ABC");
-//        sol.checkout("ABBCD");
-//        sol.checkout("ABBCD");
-//        sol.checkout("AAABBCD");
-//        sol.checkout("AABBBBCD");
-//        sol.checkout("AAAAAABBCDDDB");
+        testSkus("x");
+        testSkus("AxA");
+        testSkus("ABC");
+        testSkus("ABBCD");
+        testSkus("ABBCD");
+        testSkus("AAABBCD");
+        testSkus("AABBBBCD");
+        testSkus("AAAAAABBCDDDB");
     }
     
     private void testSkus(String skus) {
@@ -34,5 +34,6 @@ public class TestCHK1 {
         sol.checkout(skus);
     }
 }
+
 
 
