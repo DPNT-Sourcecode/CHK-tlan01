@@ -21,17 +21,17 @@ public class CheckoutSolution {
         ));
         put("I", new MarketItem("I", 35, MarketPriceSpecialOffer.emptyOffer()));
         put("J", new MarketItem("J", 60, MarketPriceSpecialOffer.emptyOffer()));
+        put("K", new MarketItem("K", 80, new MarketPriceSpecialOffer(2, 150)));
+        put("L", new MarketItem("L", 90, MarketPriceSpecialOffer.emptyOffer()));
+        put("M", new MarketItem("M", 15, MarketPriceSpecialOffer.emptyOffer()));
+        put("N", new MarketItem("N", 40, new MarketItemFreeSpecialOffer(2, "M")));
+        put("O", new MarketItem("O", 10, MarketPriceSpecialOffer.emptyOffer()));
+        put("P", new MarketItem("P", 50, new MarketPriceSpecialOffer(5, 200)));
+        put("Q", new MarketItem("Q", 30, new MarketPriceSpecialOffer(3, 80)));
+        put("R", new MarketItem("R", 50, new MarketItemFreeSpecialOffer(3, "Q")));
     }};
     
     /**
-| J    | 60    |                        |
-| K    | 80    | 2K for 150             |
-| L    | 90    |                        |
-| M    | 15    |                        |
-| N    | 40    | 3N get one M free      |
-| O    | 10    |                        |
-| P    | 50    | 5P for 200             |
-| Q    | 30    | 3Q for 80              |
 | R    | 50    | 3R get one Q free      |
 | S    | 30    |                        |
 | T    | 20    |                        |
@@ -80,4 +80,5 @@ public class CheckoutSolution {
         return market.getMarketValue();
     }
 }
+
 
