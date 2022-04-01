@@ -50,26 +50,28 @@ public class Market {
         int itemPrice = itemBucket.marketItem.getPrice();
         
         List<MarketSpecialOffer> specialOffers = new ArrayList<>(itemBucket.marketItem.getSpecialOffer());
-        specialOffers.sort((so1, so2) -> so2.getNumberOfItems() - so1.getNumberOfItems());
         
-        int totalSpecialOfferValue = 0;
-        int remainingItems = numberOfItems;
-        for(MarketPriceSpecialOffer specialOffer : specialOffers) {
-            int specialOfferValue = 0;
-            if(specialOffer.getNumberOfItems() != 0 && remainingItems >= specialOffer.getNumberOfItems()) {
-                specialOfferValue = remainingItems / specialOffer.getNumberOfItems() * specialOffer.getPriceOffer();
-                remainingItems = remainingItems % specialOffer.getNumberOfItems();
-            }
-            
-            totalSpecialOfferValue += specialOfferValue;
-        }
         
         int singleItemsValue = remainingItems * itemPrice;
         return totalSpecialOfferValue + singleItemsValue;
     }
     
-    private int computeSpecialOfferPriceValue() {
+    private PriceOfferComputationValue computeSpecialOfferPriceValue(List<MarketPriceSpecialOffer> priceOffers, int numberOfItems) {
+        priceOffers.sort((so1, so2) -> so2.getNumberOfItems() - so1.getNumberOfItems());
         
+        int totalSpecialOfferValue = 0;
+        int remainingItems = numberOfItems;
+        for(MarketPriceSpecialOffer priceOffer : priceOffers) {
+            int specialOfferValue = 0;
+            if(priceOffer.getNumberOfItems() != 0 && remainingItems >= priceOffer.getNumberOfItems()) {
+                specialOfferValue = remainingItems / priceOffer.getNumberOfItems() * priceOffer.getPriceOffer();
+                remainingItems = remainingItems % priceOffer.getNumberOfItems();
+            }
+            
+            totalSpecialOfferValue += specialOfferValue;
+        }
+        
+        return new PriceOfferComputationValue(remainingItems, totalSpecialOfferValue);
     }
     
     @Override
@@ -99,7 +101,18 @@ public class Market {
             return String.format("[%s, %s]", numberOfItems, marketItem);
         }
     }
+    
+    private class PriceOfferComputationValue {
+        private final int remainingItems;
+        private final int offerValue;
+
+        public PriceOfferComputationValue(int remainingItems, int offerValue) {
+            this.remainingItems = remainingItems;
+            this.offerValue = offerValue;
+        }
+    }
 }
+
 
 
 
