@@ -24,7 +24,7 @@ public class CheckoutSolution {
         put("K", new MarketItem("K", 80, new MarketPriceSpecialOffer(2, 150)));
         put("L", new MarketItem("L", 90, MarketPriceSpecialOffer.emptyOffer()));
         put("M", new MarketItem("M", 15, MarketPriceSpecialOffer.emptyOffer()));
-        put("N", new MarketItem("N", 40, new MarketItemFreeSpecialOffer(2, "M")));
+        put("N", new MarketItem("N", 40, new MarketItemFreeSpecialOffer(3, "M")));
         put("O", new MarketItem("O", 10, MarketPriceSpecialOffer.emptyOffer()));
         put("P", new MarketItem("P", 50, new MarketPriceSpecialOffer(5, 200)));
         put("Q", new MarketItem("Q", 30, new MarketPriceSpecialOffer(3, 80)));
@@ -78,3 +78,4 @@ public class CheckoutSolution {
         return market.getMarketValue();
     }
 }
+
