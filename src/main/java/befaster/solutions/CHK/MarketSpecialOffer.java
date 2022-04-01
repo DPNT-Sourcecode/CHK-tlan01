@@ -10,12 +10,10 @@ package befaster.solutions.CHK;
  * @author teodor
  */
 public class MarketSpecialOffer {
-    private final MarketItem item;
     private final int numberOfItems;
     private final int priceOffer;
 
-    public MarketSpecialOffer(MarketItem item, int numberOfItems, int priceOffer) {
-        this.item = item;
+    public MarketSpecialOffer(int numberOfItems, int priceOffer) {
         this.numberOfItems = numberOfItems;
         this.priceOffer = priceOffer;
     }
@@ -29,3 +27,4 @@ public class MarketSpecialOffer {
     }
     
 }
+
