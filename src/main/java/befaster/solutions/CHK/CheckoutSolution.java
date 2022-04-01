@@ -13,6 +13,7 @@ public class CheckoutSolution {
         put("C", new MarketItem("C", 20, MarketPriceSpecialOffer.emptyOffer()));
         put("D", new MarketItem("D", 15, MarketPriceSpecialOffer.emptyOffer()));
         put("E", new MarketItem("E", 40, new MarketItemFreeSpecialOffer(2, "B")));
+        put("F", new MarketItem("F", 10, new MarketItemFreeSpecialOffer(2, "F")));
     }};
     
     private Market market;
@@ -51,3 +52,4 @@ public class CheckoutSolution {
         return market.getMarketValue();
     }
 }
+
