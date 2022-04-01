@@ -39,6 +39,7 @@ public class Market {
     
     public Integer getMarketValue() {
         applyFreeItemOffers();
+        applyFreeSameItemOffers();
         return itemBuckets.keySet().stream()
                 .map(it -> getItemTotalValue(it))
                 .reduce(0, (v1,v2) -> v1 + v2);
@@ -154,6 +155,7 @@ public class Market {
         }
     }
 }
+
 
 
 
