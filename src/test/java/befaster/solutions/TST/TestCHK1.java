@@ -41,6 +41,8 @@ public class TestCHK1 {
     @Test
     public void testCHK3() {
         testSkus("AAAAA", 200);
+        testSkus("AAAAAAAA", 330);
+        testSkus("AAAAAAAAA", 380);
     }
     
     private void testSkus(String skus, int expectedValue) {
@@ -50,5 +52,6 @@ public class TestCHK1 {
         Assert.assertEquals(value, expectedValue);
     }
 }
+
 
 
