@@ -32,8 +32,8 @@ public class TestCHK1 {
     @Test
     public void testCHK2() {
         testSkus("E", 40);
-        testSkus("EE", -30);
-        testSkus("EEE", 10);
+        testSkus("EE", 80);
+        testSkus("EEE", 120);
         testSkus("AAAEE", 100);
         testSkus("BBBEE", 45);
     }
@@ -52,3 +52,4 @@ public class TestCHK1 {
         Assert.assertEquals(value, expectedValue);
     }
 }
+

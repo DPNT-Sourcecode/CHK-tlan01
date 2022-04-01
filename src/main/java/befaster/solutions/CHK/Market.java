@@ -48,6 +48,19 @@ public class Market {
         for(String itemTag : itemBuckets.keySet()) {
             MarketItemBucket itemBucket = itemBuckets.get(itemTag);
             List<MarketItemFreeSpecialOffer> itemFreeOffers = getItemFreeOffers(itemBucket);
+            
+            itemFreeOffers.forEach(ifo -> {
+                int offerItemNumber = ifo.getNumberOfItems();
+                String itemFreeTag = ifo.getItemTag();
+                
+                if(itemBuckets.containsKey(itemFreeTag) == false) {
+                    return;
+                }
+                
+                MarketItemBucket reductionItemBucket = itemBuckets.get(itemFreeTag);
+                int freeReduction = itemBucket.numberOfItems / offerItemNumber;
+                reductionItemBucket.substractItems(freeReduction);
+            });
         }
     }
     
@@ -111,10 +124,15 @@ public class Market {
             numberOfItems++;
         }
         
+        private void substractItems(int value) {
+            numberOfItems -= value;
+        }
+        
         @Override
         public String toString() {
             return String.format("[%s, %s]", numberOfItems, marketItem);
         }
     }
 }
+
 
