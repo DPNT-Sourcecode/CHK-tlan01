@@ -16,13 +16,13 @@ import java.util.stream.Collectors;
 public class MarketItem {
     private final String tag;
     private final int price;
-    private final List<MarketReductionSpecialOffer> specialOffers;
+    private final List<MarketSpecialOffer> specialOffers;
     
-    public MarketItem(String tag, int price, MarketReductionSpecialOffer... specialOffers) {
+    public MarketItem(String tag, int price, MarketSpecialOffer... specialOffers) {
         this(tag, price, Arrays.asList(specialOffers));
     }
     
-    public MarketItem(String tag, int price, List<MarketReductionSpecialOffer> specialOffers) {
+    public MarketItem(String tag, int price, List<MarketSpecialOffer> specialOffers) {
         this.tag = tag;
         this.price = price;
         this.specialOffers = specialOffers;
@@ -36,17 +36,11 @@ public class MarketItem {
         return price;
     }
 
-    public List<MarketReductionSpecialOffer> getSpecialOffer() {
+    public List<MarketSpecialOffer> getSpecialOffer() {
         return specialOffers;
     }
 
-    public MarketItem cloneItem() {
-        return new MarketItem(tag, price, 
-                specialOffers.stream()
-                        .map(so -> so.cloneOffer())
-                        .collect(Collectors.toList())
-        );
-    }
 }
+
 
 

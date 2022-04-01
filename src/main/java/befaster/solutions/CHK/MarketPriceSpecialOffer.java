@@ -9,10 +9,10 @@ package befaster.solutions.CHK;
  *
  * @author teodor
  */
-public class MarketReductionSpecialOffer extends MarketSpecialOffer{
+public class MarketPriceSpecialOffer extends MarketSpecialOffer{
     private final int priceOffer;
 
-    public MarketReductionSpecialOffer(int numberOfItems, int priceOffer) {
+    public MarketPriceSpecialOffer(int numberOfItems, int priceOffer) {
         super(numberOfItems);
         this.priceOffer = priceOffer;
     }
@@ -21,13 +21,12 @@ public class MarketReductionSpecialOffer extends MarketSpecialOffer{
         return priceOffer;
     }
     
-    public static MarketReductionSpecialOffer emptyOffer() {
-        return new MarketReductionSpecialOffer(0, 0);
+    public static MarketPriceSpecialOffer emptyOffer() {
+        return new MarketPriceSpecialOffer(0, 0);
     }
 
-    public MarketReductionSpecialOffer cloneOffer() {
-        return new MarketReductionSpecialOffer(numberOfItems, priceOffer);
+    public MarketPriceSpecialOffer cloneOffer() {
+        return new MarketPriceSpecialOffer(numberOfItems, priceOffer);
     }
     
 }
-

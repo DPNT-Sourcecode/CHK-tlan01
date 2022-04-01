@@ -12,7 +12,7 @@ package befaster.solutions.CHK;
 public class MarketItemFreeSpecialOffer extends MarketSpecialOffer {
     private final String itemTag;
     
-    public MarketItemFreeSpecialOffer(String itemTag, int numberOfItems) {
+    public MarketItemFreeSpecialOffer(int numberOfItems, String itemTag) {
         super(numberOfItems);
         this.itemTag = itemTag;
     }
@@ -22,3 +22,4 @@ public class MarketItemFreeSpecialOffer extends MarketSpecialOffer {
     }
     
 }
+

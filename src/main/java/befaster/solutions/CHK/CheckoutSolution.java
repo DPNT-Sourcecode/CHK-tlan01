@@ -6,13 +6,13 @@ import java.util.Map;
 public class CheckoutSolution {
     private static final Map<String, MarketItem> ITEMS_FOR_TAGS = new HashMap<String, MarketItem>(){{
         put("A", new MarketItem("A", 50, 
-                new MarketReductionSpecialOffer(3, 130),
-                new MarketReductionSpecialOffer(5, 200)
+                new MarketPriceSpecialOffer(3, 130),
+                new MarketPriceSpecialOffer(5, 200)
         ));
-        put("B", new MarketItem("B", 30, new MarketReductionSpecialOffer(2, 45)));
-        put("C", new MarketItem("C", 20, MarketReductionSpecialOffer.emptyOffer()));
-        put("D", new MarketItem("D", 15, MarketReductionSpecialOffer.emptyOffer()));
-        put("E", new MarketItem("E", 40, new MarketReductionSpecialOffer(2, -30)));
+        put("B", new MarketItem("B", 30, new MarketPriceSpecialOffer(2, 45)));
+        put("C", new MarketItem("C", 20, MarketPriceSpecialOffer.emptyOffer()));
+        put("D", new MarketItem("D", 15, MarketPriceSpecialOffer.emptyOffer()));
+        put("E", new MarketItem("E", 40, new MarketItemFreeSpecialOffer(2, "B")));
     }};
     
     private Market market;
@@ -43,7 +43,7 @@ public class CheckoutSolution {
             return false;
         }
         
-        market.addItem(itemTag, ITEMS_FOR_TAGS.get(itemTag).cloneItem());
+        market.addItem(itemTag, ITEMS_FOR_TAGS.get(itemTag));
         return true;
     }
     
@@ -51,5 +51,6 @@ public class CheckoutSolution {
         return market.getMarketValue();
     }
 }
+
 
 
