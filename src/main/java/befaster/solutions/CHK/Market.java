@@ -27,8 +27,18 @@ public class Market {
         }
     }
     
-    public void registerNewItem(MarketItem newMarketItem) {
-        itemBuckets.put(newMarketItem.getTag(), new MarketItemBucket(newMarketItem));
+    public void addItem(String itemTag, MarketItem newMarketItem) {
+        itemBuckets.put(itemTag, new MarketItemBucket(newMarketItem));
+    }
+    
+    private String toString() {
+        return itemBuckets.keySet().stream()
+                .map(it -> System.out.println(
+                        String.format(
+                                "%s -> %s", 
+                                it, itemBuckets.get(it).toString()
+                        )
+                ))
     }
     
     private class MarketItemBucket {
@@ -45,3 +55,4 @@ public class Market {
         }
     }
 }
+
