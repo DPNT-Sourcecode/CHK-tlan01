@@ -11,9 +11,11 @@ public class CheckoutSolution {
         put("D", new MarketItem("D", 15, MarketSpecialOffer.emptyOffer()));
     }};
     
-    private final Market market = new Market();
+    private Market market;
     
     public Integer checkout(String skus) {
+        market = new Market();
+        
         boolean itemsProcessed = processItems(skus);
         if(!itemsProcessed) {
             return -1;
@@ -45,3 +47,4 @@ public class CheckoutSolution {
         return market.getMarketValue();
     }
 }
+
