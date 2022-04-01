@@ -12,11 +12,12 @@ package befaster.solutions.CHK;
 public class MarketItem {
     private final String tag;
     private final int price;
-    private MarketSpecialOffer specialOffer;
+    private final MarketSpecialOffer specialOffer;
     
-    public MarketItem(String tag, int price) {
+    public MarketItem(String tag, int price, MarketSpecialOffer specialOffer) {
         this.tag = tag;
         this.price = price;
+        this.specialOffer = specialOffer;
     }
 
     public String getTag() {
@@ -30,10 +31,4 @@ public class MarketItem {
     public MarketSpecialOffer getSpecialOffer() {
         return specialOffer;
     }
-    
-    public void registerSpecialOffer(MarketSpecialOffer specialOffer) {
-        this.specialOffer = specialOffer;
-    }
 }
-
-
