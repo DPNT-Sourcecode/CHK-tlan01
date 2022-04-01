@@ -52,8 +52,10 @@ public class Market {
             
             itemFreeOffers.forEach(ifo -> {
                 int offerItemNumber = ifo.getNumberOfItems();
-                int freeReduction = itemBucket.numberOfItems % (offerItemNumber + 1);
-                itemBucket.substractItems(freeReduction);
+                if(itemBucket.numberOfItems > offerItemNumber) {
+                    int freeReduction = itemBucket.numberOfItems % (offerItemNumber + 1);
+                    itemBucket.substractItems(freeReduction);
+                }
             });
         }
     }
@@ -155,4 +157,5 @@ public class Market {
         }
     }
 }
+
 
