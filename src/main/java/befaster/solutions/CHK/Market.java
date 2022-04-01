@@ -37,8 +37,8 @@ public class Market {
         return itemBuckets.keySet().stream()
                 .map(it -> String.format(
                                 "%s -> %s", 
-                                it, itemBuckets.get(it).toString()
-                )).collect(Collectors.joining("\n"));
+                                it, itemBuckets.get(it).toString())
+                ).collect(Collectors.joining("\n"));
     }
     
     private class MarketItemBucket {
@@ -54,10 +54,12 @@ public class Market {
             numberOfItems++;
         }
         
+        @Override
         public String toString() {
-            return String.format("[%s, %s]", numberOfItems, marketIem);
+            return String.format("[%s, %s]", numberOfItems, marketItem);
         }
     }
 }
+
 
 

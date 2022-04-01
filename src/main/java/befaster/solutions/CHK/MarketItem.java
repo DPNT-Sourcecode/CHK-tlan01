@@ -34,7 +34,10 @@ public class MarketItem {
     
     @Override
     public String toString() {
-        return String.format("{%s, %d, %s, %s, %s}", args)
+        return String.format("{%s, %d, %d, %d}", 
+                tag, price, specialOffer.getNumberOfItems(), specialOffer.getPriceOffer()
+        );
     }
 }
+
 

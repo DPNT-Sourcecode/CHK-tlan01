@@ -19,7 +19,8 @@ public class CheckoutSolution {
             return -1;
         }
         
-        // TO DO - price calculation
+        System.out.println(market.toString());
+        return -1; // for now
     }
     
     private boolean processItems(String skus) {
@@ -41,5 +42,6 @@ public class CheckoutSolution {
         return true;
     }
 }
+
 
 
