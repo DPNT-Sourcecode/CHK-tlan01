@@ -29,20 +29,18 @@ public class CheckoutSolution {
         put("P", new MarketItem("P", 50, new MarketPriceSpecialOffer(5, 200)));
         put("Q", new MarketItem("Q", 30, new MarketPriceSpecialOffer(3, 80)));
         put("R", new MarketItem("R", 50, new MarketItemFreeSpecialOffer(3, "Q")));
+        put("S", new MarketItem("S", 30, MarketPriceSpecialOffer.emptyOffer()));
+        put("T", new MarketItem("T", 20, MarketPriceSpecialOffer.emptyOffer()));
+        put("U", new MarketItem("U", 40, new MarketItemSameFreeSpecialOffer(3)));
+        put("V", new MarketItem("V", 50, 
+                new MarketPriceSpecialOffer(2, 90),
+                new MarketPriceSpecialOffer(3, 130)
+        ));
+        put("W", new MarketItem("W", 20, MarketPriceSpecialOffer.emptyOffer()));
+        put("X", new MarketItem("X", 90, MarketPriceSpecialOffer.emptyOffer()));
+        put("Y", new MarketItem("Y", 10, MarketPriceSpecialOffer.emptyOffer()));
+        put("Z", new MarketItem("Z", 50, MarketPriceSpecialOffer.emptyOffer()));
     }};
-    
-    /**
-| R    | 50    | 3R get one Q free      |
-| S    | 30    |                        |
-| T    | 20    |                        |
-| U    | 40    | 3U get one U free      |
-| V    | 50    | 2V for 90, 3V for 130  |
-| W    | 20    |                        |
-| X    | 90    |                        |
-| Y    | 10    |                        |
-| Z    | 50    |                        |
-+------+-------+------------------------+
-     */
     
     private Market market;
     
@@ -80,5 +78,6 @@ public class CheckoutSolution {
         return market.getMarketValue();
     }
 }
+
 
 
