@@ -64,5 +64,3 @@ public class TestCHK1 {
         Assert.assertEquals(value, expectedValue);
     }
 }
-
-
