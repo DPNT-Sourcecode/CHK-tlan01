@@ -26,7 +26,7 @@ public class TestCHK1 {
         testSkus("ABBCD", 130);
         testSkus("AAABBCD", 210);
         testSkus("AABBBBCD", 225);
-        testSkus("AAAAAABBCDDDB", 400);
+        testSkus("AAAAAABBCDDDB", 390);
     }
     
     @Test
@@ -50,4 +50,5 @@ public class TestCHK1 {
         Assert.assertEquals(value, expectedValue);
     }
 }
+
 

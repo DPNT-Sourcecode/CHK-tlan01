@@ -5,7 +5,10 @@ import java.util.Map;
 
 public class CheckoutSolution {
     private static final Map<String, MarketItem> ITEMS_FOR_TAGS = new HashMap<String, MarketItem>(){{
-        put("A", new MarketItem("A", 50, new MarketSpecialOffer(3, 130)));
+        put("A", new MarketItem("A", 50, 
+                new MarketSpecialOffer(3, 130),
+                new MarketSpecialOffer(5, 200)
+        ));
         put("B", new MarketItem("B", 30, new MarketSpecialOffer(2, 45)));
         put("C", new MarketItem("C", 20, MarketSpecialOffer.emptyOffer()));
         put("D", new MarketItem("D", 15, MarketSpecialOffer.emptyOffer()));
@@ -48,3 +51,4 @@ public class CheckoutSolution {
         return market.getMarketValue();
     }
 }
+
