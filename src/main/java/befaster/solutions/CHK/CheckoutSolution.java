@@ -19,8 +19,7 @@ public class CheckoutSolution {
             return -1;
         }
         
-        System.out.println(market.toString());
-        return -1; // for now
+        return getMarketValue(); // for now
     }
     
     private boolean processItems(String skus) {
@@ -41,7 +40,12 @@ public class CheckoutSolution {
         market.addItem(itemTag, ITEMS_FOR_TAGS.get(itemTag).cloneItem());
         return true;
     }
+    
+    private Integer getMarketValue() {
+        
+    }
 }
+
 
 
 

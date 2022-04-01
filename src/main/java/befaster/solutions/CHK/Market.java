@@ -29,7 +29,15 @@ public class Market {
     }
     
     public void addItem(String itemTag, MarketItem newMarketItem) {
-        itemBuckets.put(itemTag, new MarketItemBucket(newMarketItem));
+        if(itemBuckets.containsKey(itemTag)) {
+            itemBuckets.get(itemTag).incrementNumberOfItems();
+        } else {
+            itemBuckets.put(itemTag, new MarketItemBucket(newMarketItem));
+        }
+    }
+    
+    public Integer getMarketValue() {
+        
     }
     
     @Override
@@ -60,6 +68,7 @@ public class Market {
         }
     }
 }
+
 
 
 
