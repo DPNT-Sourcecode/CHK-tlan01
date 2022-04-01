@@ -31,9 +31,6 @@ public class TestCHK1 {
     
     private void testSkus(String skus) {
         CheckoutSolution sol = new CheckoutSolution();
-        sol.checkout(skus);
+        int value = sol.checkout(skus);
     }
 }
-
-
-

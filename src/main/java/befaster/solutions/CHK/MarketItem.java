@@ -43,6 +43,3 @@ public class MarketItem {
         return new MarketItem(tag, price, specialOffer.cloneOffer());
     }
 }
-
-
-

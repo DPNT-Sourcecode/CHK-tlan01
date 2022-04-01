@@ -42,12 +42,6 @@ public class CheckoutSolution {
     }
     
     private Integer getMarketValue() {
-        
+        return market.getMarketValue();
     }
 }
-
-
-
-
-
-

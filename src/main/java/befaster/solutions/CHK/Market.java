@@ -37,7 +37,9 @@ public class Market {
     }
     
     public Integer getMarketValue() {
-        
+        return itemBuckets.keySet().stream()
+                .map(it -> getItemTotalValue(it))
+                .reduce(0, (v1,v2) -> v1 + v2);
     }
     
     private Integer getItemTotalValue(String itemTag) {
@@ -47,7 +49,11 @@ public class Market {
         int itemPrice = itemBucket.marketItem.getPrice();
         int speciafOfferPrice = itemBucket.marketItem.getSpecialOffer().getPriceOffer();
         
-        return 
+        int specialOfferValue = itemsForSpecialOffer == 0 ? 0 
+                : (numberOfItems % itemsForSpecialOffer) * speciafOfferPrice;
+        int singleItemsValue = (numberOfItems / itemsForSpecialOffer) * itemPrice;
+        
+        return specialOfferValue + singleItemsValue;
     }
     
     @Override
@@ -78,8 +84,3 @@ public class Market {
         }
     }
 }
-
-
-
-
-
