@@ -10,8 +10,21 @@ package befaster.solutions.CHK;
  * @author teodor
  */
 public class MarketItem {
-    private int price;
-    private String tag;
+    private final String tag;
+    private final int price;
     
-    public
+    public MarketItem(String tag, int price) {
+        this.tag = tag;
+        this.price = price;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+    
 }
+
