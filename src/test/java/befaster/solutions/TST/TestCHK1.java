@@ -53,7 +53,8 @@ public class TestCHK1 {
         testSkus("F", 10);
         testSkus("FF", 20);
         testSkus("FFF", 20);
-        testSkus("FFFFF", 30);
+        testSkus("FFFF", 30);
+        testSkus("FFFFFF", 30);
     }
     
     private void testSkus(String skus, int expectedValue) {
@@ -63,3 +64,4 @@ public class TestCHK1 {
         Assert.assertEquals(value, expectedValue);
     }
 }
+
