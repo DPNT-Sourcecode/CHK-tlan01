@@ -38,13 +38,26 @@ public class Market {
     }
     
     public Integer getMarketValue() {
-        applyItemOffers();
+        applyFreeItemOffers();
         return itemBuckets.keySet().stream()
                 .map(it -> getItemTotalValue(it))
                 .reduce(0, (v1,v2) -> v1 + v2);
     }
     
-    private void applyItemOffers() {
+    private void applyFreeSameItemOffers() {
+        for(String itemTag : itemBuckets.keySet()) {
+            MarketItemBucket itemBucket = itemBuckets.get(itemTag);
+            List<MarketItemSameFreeSpecialOffer> itemFreeOffers = getSameItemFreeOffers(itemBucket);
+            
+            itemFreeOffers.forEach(ifo -> {
+                int offerItemNumber = ifo.getNumberOfItems();
+                int freeReduction = itemBucket.numberOfItems / offerItemNumber;
+                itemBucket.substractItems(freeReduction);
+            });
+        }
+    }
+    
+    private void applyFreeItemOffers() {
         for(String itemTag : itemBuckets.keySet()) {
             MarketItemBucket itemBucket = itemBuckets.get(itemTag);
             List<MarketItemFreeSpecialOffer> itemFreeOffers = getItemFreeOffers(itemBucket);
@@ -102,6 +115,13 @@ public class Market {
                 .collect(Collectors.toList());
     }
     
+    private List<MarketItemSameFreeSpecialOffer> getSameItemFreeOffers(MarketItemBucket itemBucket) {
+        return itemBucket.marketItem.getSpecialOffer().stream()
+                .filter(o -> o instanceof MarketItemSameFreeSpecialOffer)
+                .map(o -> (MarketItemSameFreeSpecialOffer) o)
+                .collect(Collectors.toList());
+    }
+    
     @Override
     public String toString() {
         return itemBuckets.keySet().stream()
@@ -134,6 +154,7 @@ public class Market {
         }
     }
 }
+
 
 
 

@@ -10,14 +10,10 @@ package befaster.solutions.CHK;
  * @author teodor
  */
 public class MarketItemSameFreeSpecialOffer extends MarketSpecialOffer{
-    private final String itemTag;
     
-    public MarketItemSameFreeSpecialOffer(int numberOfItems, String itemTag) {
+    public MarketItemSameFreeSpecialOffer(int numberOfItems) {
         super(numberOfItems);
-        this.itemTag = itemTag;
     }
 
-    public String getItemTag() {
-        return itemTag;
-    }
 }
+
