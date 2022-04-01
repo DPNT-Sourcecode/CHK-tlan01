@@ -7,6 +7,8 @@ package befaster.solutions.TST;
 
 import befaster.solutions.CHK.CheckoutSolution;
 import org.junit.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import org.junit.Assert;
 
 /**
  *
@@ -23,17 +25,18 @@ public class TestCHK1 {
         testSkus("AxA", -1);
         testSkus("ABC", 100);
         testSkus("ABBCD", 115);
-        testSkus("ABBCD", 1);
-        testSkus("AAABBCD", 1);
-        testSkus("AABBBBCD", 1);
-        testSkus("AAAAAABBCDDDB", 1);
+        testSkus("AAABBCD", 210);
+        testSkus("AABBBBCD", 195);
+        testSkus("AAAAAABBCDDDB", 240);
     }
     
     private void testSkus(String skus, int expectedValue) {
         CheckoutSolution sol = new CheckoutSolution();
         int value = sol.checkout(skus);
-        System.out.println("test");
+        
+        Assert.assertEquals(value, expectedValue);
     }
 }
+
 
 

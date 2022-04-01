@@ -53,6 +53,10 @@ public class Market {
             return numberOfItems * itemPrice;
         }
         
+        if(numberOfItems == itemsForSpecialOffer) {
+            return speciafOfferPrice;
+        }
+        
         int specialOfferValue = (numberOfItems % itemsForSpecialOffer) * speciafOfferPrice;
         int singleItemsValue = (numberOfItems / itemsForSpecialOffer) * itemPrice;
         
@@ -87,4 +91,5 @@ public class Market {
         }
     }
 }
+
 
