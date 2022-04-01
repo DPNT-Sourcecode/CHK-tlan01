@@ -38,35 +38,30 @@ public class Market {
     }
     
     public Integer getMarketValue() {
-        int absoluteMarketValue = itemBuckets.keySet().stream()
+        applyItemOffers();
+        return itemBuckets.keySet().stream()
                 .map(it -> getItemTotalValue(it))
                 .reduce(0, (v1,v2) -> v1 + v2);
-
-        return substractItemOffers(absoluteMarketValue);
     }
     
-    private int substractItemOffers(int absoluteMarketValue) {
-        int marketValue = absoluteMarketValue;
+    private void applyItemOffers() {
         for(String itemTag : itemBuckets.keySet()) {
             MarketItemBucket itemBucket = itemBuckets.get(itemTag);
             List<MarketItemFreeSpecialOffer> itemFreeOffers = getItemFreeOffers(itemBucket);
             
-            for(MarketItemFreeSpecialOffer ifo : itemFreeOffers) {
+            itemFreeOffers.forEach(ifo -> {
                 int offerItemNumber = ifo.getNumberOfItems();
                 String itemFreeTag = ifo.getItemTag();
                 
                 if(itemBuckets.containsKey(itemFreeTag) == false) {
-                    continue;
+                    return;
                 }
                 
                 MarketItemBucket reductionItemBucket = itemBuckets.get(itemFreeTag);
-                int freeReduction = itemBucket.numberOfItems / offerItemNumber 
-                        * reductionItemBucket.marketItem.getPrice();
-                marketValue -= freeReduction;
-            }
+                int freeReduction = itemBucket.numberOfItems / offerItemNumber;
+                reductionItemBucket.substractItems(freeReduction);
+            });
         }
-        
-        return marketValue;
     }
     
     private Integer getItemTotalValue(String itemTag) {
@@ -139,6 +134,7 @@ public class Market {
         }
     }
 }
+
 
 
 
