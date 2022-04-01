@@ -53,7 +53,7 @@ public class Market {
             itemFreeOffers.forEach(ifo -> {
                 int offerItemNumber = ifo.getNumberOfItems();
                 
-                // 6 -> 2 6/2 => 
+                // 6 -> 2, 8 -> 3, 10 -> 3? 12 -> 4
                 int freeReduction = itemBucket.numberOfItems / offerItemNumber;
                 
                 itemBucket.substractItems(freeReduction);
@@ -158,4 +158,5 @@ public class Market {
         }
     }
 }
+
 
