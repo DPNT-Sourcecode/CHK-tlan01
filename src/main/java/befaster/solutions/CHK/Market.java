@@ -7,6 +7,7 @@ package befaster.solutions.CHK;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -31,14 +32,13 @@ public class Market {
         itemBuckets.put(itemTag, new MarketItemBucket(newMarketItem));
     }
     
-    private String toString() {
+    @Override
+    public String toString() {
         return itemBuckets.keySet().stream()
-                .map(it -> System.out.println(
-                        String.format(
+                .map(it -> String.format(
                                 "%s -> %s", 
                                 it, itemBuckets.get(it).toString()
-                        )
-                ))
+                )).collect(Collectors.joining("\n"));
     }
     
     private class MarketItemBucket {
@@ -53,6 +53,11 @@ public class Market {
         private void incrementNumberOfItems() {
             numberOfItems++;
         }
+        
+        public String toString() {
+            return String.format("[%s, %s]", numberOfItems, marketIem);
+        }
     }
 }
+
 

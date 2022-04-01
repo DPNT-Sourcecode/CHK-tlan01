@@ -31,4 +31,10 @@ public class MarketItem {
     public MarketSpecialOffer getSpecialOffer() {
         return specialOffer;
     }
+    
+    @Override
+    public String toString() {
+        return String.format("{%s, %d, %s, %s, %s}", args)
+    }
 }
+
