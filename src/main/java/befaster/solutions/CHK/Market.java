@@ -5,41 +5,45 @@
  */
 package befaster.solutions.CHK;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author teodor
  */
 public class Market {
-    private final List<MarketItemBucket> itemBuckets = new ArrayList<>();
+    private final Map<String, MarketItemBucket> itemBuckets = new HashMap<>();
     
     public Market() { }
     
     public boolean itemExists(String itemTag) {
-        return itemBuckets.stream()
-                .anyMatch(ib -> ib.marketItem.getTag().equals(itemTag));
+        return itemBuckets.containsKey(itemTag);
     }
     
     public void addToExistingItem(String itemTag) {
-        
+        if(itemBuckets.containsKey(itemTag)) {
+            itemBuckets.get(itemTag).incrementNumberOfItems();
+        }
     }
     
     public void registerNewItem(MarketItem newMarketItem) {
-        itemBuckets.add(new MarketItemBucket(newMarketItem));
+        itemBuckets.put(newMarketItem.getTag(), new MarketItemBucket(newMarketItem));
     }
     
     private class MarketItemBucket {
-        private MarketItem marketItem;
-        private int number;
+        private final MarketItem marketItem;
+        private int numberOfItems;
         
         private MarketItemBucket(MarketItem item) {
             this.marketItem = item;
-            this.number = 1; // a new bucket with a single item inside, at first
+            this.numberOfItems = 1; // a new bucket with a single item inside, at first
         }
         
-        
+        private void incrementNumberOfItems() {
+            numberOfItems++;
+        }
     }
 }
+
 

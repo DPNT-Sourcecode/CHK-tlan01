@@ -1,16 +1,17 @@
 package befaster.solutions.CHK;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CheckoutSolution {
-    private final List<MarketItem> marketItems = new ArrayList<>();
+    private final Map<String, MarketItem> itemForTags = new HashMap<String, MarketItem>();
     
     public Integer checkout(String skus) {
         return -1;
     }
 
 }
+
 
 
 
