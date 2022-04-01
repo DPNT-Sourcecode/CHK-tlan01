@@ -22,4 +22,3 @@ public class MarketItemFreeSpecialOffer extends MarketSpecialOffer {
     }
     
 }
-
