@@ -5,7 +5,6 @@
  */
 package befaster.solutions.CHK;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,9 +38,17 @@ public class Market {
     }
     
     public Integer getMarketValue() {
+        applyItemOffers();
         return itemBuckets.keySet().stream()
                 .map(it -> getItemTotalValue(it))
                 .reduce(0, (v1,v2) -> v1 + v2);
+    }
+    
+    private void applyItemOffers() {
+        for(String itemTag : itemBuckets.keySet()) {
+            MarketItemBucket itemBucket = itemBuckets.get(itemTag);
+            List<MarketItemFreeSpecialOffer> itemFreeOffers = getItemFreeOffers(itemBucket);
+        }
     }
     
     private Integer getItemTotalValue(String itemTag) {
@@ -49,7 +56,7 @@ public class Market {
         int numberOfItems = itemBucket.numberOfItems;
         int itemPrice = itemBucket.marketItem.getPrice();
         
-        List<MarketSpecialOffer> specialOffers = new ArrayList<>(itemBucket.marketItem.getSpecialOffer());
+        List<MarketPriceSpecialOffer> specialOffers = getPriceOffers(itemBucket);
         specialOffers.sort((so1, so2) -> so2.getNumberOfItems() - so1.getNumberOfItems());
         
         int totalSpecialOfferValue = 0;
@@ -69,7 +76,17 @@ public class Market {
     }
     
     private List<MarketPriceSpecialOffer> getPriceOffers(MarketItemBucket itemBucket) {
-        
+        return itemBucket.marketItem.getSpecialOffer().stream()
+                .filter(o -> o instanceof MarketPriceSpecialOffer)
+                .map(o -> (MarketPriceSpecialOffer) o)
+                .collect(Collectors.toList());
+    }
+    
+    private List<MarketItemFreeSpecialOffer> getItemFreeOffers(MarketItemBucket itemBucket) {
+        return itemBucket.marketItem.getSpecialOffer().stream()
+                .filter(o -> o instanceof MarketItemFreeSpecialOffer)
+                .map(o -> (MarketItemFreeSpecialOffer) o)
+                .collect(Collectors.toList());
     }
     
     @Override
@@ -100,3 +117,4 @@ public class Market {
         }
     }
 }
+
