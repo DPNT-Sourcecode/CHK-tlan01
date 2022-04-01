@@ -26,4 +26,13 @@ public class MarketSpecialOffer {
         return priceOffer;
     }
     
+    public static MarketSpecialOffer emptyOffer() {
+        return new MarketSpecialOffer(0, 0);
+    }
+
+    public MarketSpecialOffer cloneOffer() {
+        return new MarketSpecialOffer(numberOfItems, priceOffer);
+    }
+    
 }
+

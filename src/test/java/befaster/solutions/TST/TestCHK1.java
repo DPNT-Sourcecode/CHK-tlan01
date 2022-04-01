@@ -19,7 +19,6 @@ public class TestCHK1 {
         testSkus("B");
         testSkus("C");
         testSkus("D");
-        
 //        sol.checkout("x");
 //        sol.checkout("AxA");
 //        sol.checkout("ABC");
@@ -32,6 +31,8 @@ public class TestCHK1 {
     
     private void testSkus(String skus) {
         CheckoutSolution sol = new CheckoutSolution();
+        sol.checkout(skus);
     }
 }
+
 

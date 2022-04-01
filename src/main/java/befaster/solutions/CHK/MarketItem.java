@@ -38,6 +38,11 @@ public class MarketItem {
                 tag, price, specialOffer.getNumberOfItems(), specialOffer.getPriceOffer()
         );
     }
+
+    public MarketItem cloneItem() {
+        return new MarketItem(tag, price, specialOffer.cloneOffer());
+    }
 }
+
 
 

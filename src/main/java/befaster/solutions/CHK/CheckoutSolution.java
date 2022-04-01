@@ -7,8 +7,8 @@ public class CheckoutSolution {
     private static final Map<String, MarketItem> ITEMS_FOR_TAGS = new HashMap<String, MarketItem>(){{
         put("A", new MarketItem("A", 50, new MarketSpecialOffer(3, 130)));
         put("B", new MarketItem("B", 30, new MarketSpecialOffer(2, 45)));
-        put("C", new MarketItem("C", 20, null));
-        put("D", new MarketItem("D", 15, null));
+        put("C", new MarketItem("C", 20, MarketSpecialOffer.emptyOffer()));
+        put("D", new MarketItem("D", 15, MarketSpecialOffer.emptyOffer()));
     }};
     
     private final Market market = new Market();
@@ -42,6 +42,7 @@ public class CheckoutSolution {
         return true;
     }
 }
+
 
 
 
