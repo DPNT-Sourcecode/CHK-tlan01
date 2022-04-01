@@ -40,6 +40,16 @@ public class Market {
         
     }
     
+    private Integer getItemTotalValue(String itemTag) {
+        MarketItemBucket itemBucket = itemBuckets.get(itemTag);
+        int numberOfItems = itemBucket.numberOfItems;
+        int itemsForSpecialOffer = itemBucket.marketItem.getSpecialOffer().getNumberOfItems();
+        int itemPrice = itemBucket.marketItem.getPrice();
+        int speciafOfferPrice = itemBucket.marketItem.getSpecialOffer().getPriceOffer();
+        
+        return 
+    }
+    
     @Override
     public String toString() {
         return itemBuckets.keySet().stream()
@@ -68,6 +78,7 @@ public class Market {
         }
     }
 }
+
 
 
 
