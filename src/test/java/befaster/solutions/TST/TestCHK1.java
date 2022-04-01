@@ -38,6 +38,11 @@ public class TestCHK1 {
         testSkus("BBBEE", 45);
     }
     
+    @Test
+    public void testCHK3() {
+        testSkus("AAAAA", 200);
+    }
+    
     private void testSkus(String skus, int expectedValue) {
         CheckoutSolution sol = new CheckoutSolution();
         int value = sol.checkout(skus);
@@ -45,3 +50,4 @@ public class TestCHK1 {
         Assert.assertEquals(value, expectedValue);
     }
 }
+

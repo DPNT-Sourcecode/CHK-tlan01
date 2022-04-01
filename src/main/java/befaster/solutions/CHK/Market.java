@@ -52,21 +52,20 @@ public class Market {
         List<MarketSpecialOffer> specialOffers = new ArrayList<>(itemBucket.marketItem.getSpecialOffer());
         specialOffers.sort((so1, so2) -> so2.getNumberOfItems() - so1.getNumberOfItems());
         
-        int speciaOffersValue = 0;
+        int totalSpecialOfferValue = 0;
         int remainingItems = numberOfItems;
         for(MarketSpecialOffer specialOffer : specialOffers) {
             int specialOfferValue = 0;
             if(specialOffer.getNumberOfItems() != 0 && remainingItems >= specialOffer.getNumberOfItems()) {
                 specialOfferValue = remainingItems / specialOffer.getNumberOfItems() * specialOffer.getPriceOffer();
-                remainingItems = remainingItems - remainingItems / specialOffer.getNumberOfItems();
+                remainingItems = remainingItems % specialOffer.getNumberOfItems();
             }
             
-            speciaOffersValue += speciaOffersValue;
+            totalSpecialOfferValue += specialOfferValue;
         }
         
-        int singleItemsValue = (numberOfItems % itemsForSpecialOffer) * itemPrice;
-        
-        return specialOfferValue + singleItemsValue;
+        int singleItemsValue = remainingItems * itemPrice;
+        return totalSpecialOfferValue + singleItemsValue;
     }
     
     @Override
@@ -97,5 +96,6 @@ public class Market {
         }
     }
 }
+
 
 
