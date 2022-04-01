@@ -16,13 +16,13 @@ import java.util.stream.Collectors;
 public class MarketItem {
     private final String tag;
     private final int price;
-    private final List<MarketSpecialOffer> specialOffers;
+    private final List<MarketReductionSpecialOffer> specialOffers;
     
-    public MarketItem(String tag, int price, MarketSpecialOffer... specialOffers) {
+    public MarketItem(String tag, int price, MarketReductionSpecialOffer... specialOffers) {
         this(tag, price, Arrays.asList(specialOffers));
     }
     
-    public MarketItem(String tag, int price, List<MarketSpecialOffer> specialOffers) {
+    public MarketItem(String tag, int price, List<MarketReductionSpecialOffer> specialOffers) {
         this.tag = tag;
         this.price = price;
         this.specialOffers = specialOffers;
@@ -36,7 +36,7 @@ public class MarketItem {
         return price;
     }
 
-    public List<MarketSpecialOffer> getSpecialOffer() {
+    public List<MarketReductionSpecialOffer> getSpecialOffer() {
         return specialOffers;
     }
 
@@ -48,4 +48,5 @@ public class MarketItem {
         );
     }
 }
+
 
